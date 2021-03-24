@@ -1,21 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .title }}</title>
+{{ template "layout" . }}
 
-    <style>
-        .text {
-            color: blue
-        }
-    </style>
+{{ define "content" }}
 
-</head>
-<body>
-    <div class="text">
-        {{ .content }}
-    </div>
-</body>
-</html>
+
+
+
+<table style="border: 1px solid black;">
+    <tr style="border: 1px solid black;">
+        <th style="border: 1px solid black;">No</th>
+        <th style="border: 1px solid black;">ID</th>
+        <th style="border: 1px solid black;">Name</th>
+        <th style="border: 1px solid black;">Price</th>
+        <th style="border: 1px solid black;">Stock</th>
+        <th style="border: 1px solid black;">Status</th>
+        <th style="border: 1px solid black;">Action</th>
+    </tr>
+
+    {{ range $indexKey, $value := . }}
+    
+    <tr >
+        <td>{{$indexKey}}</td>
+        <td>{{$value.ID}}</td>
+        <td>{{$value.Name}}</td>
+        <td>{{$value.Price}}</td>
+        <td>{{$value.Stock}}</td>
+        <td>{{ .StockStatus }}</td>
+        <td>
+            <a href="javascript::void(0)">click ON</a>
+        </td>
+        
+    </tr>
+
+
+    {{ end }}
+    
+</table>
+
+
+{{ end }}
