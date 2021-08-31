@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 )
 
 func main() {
@@ -27,9 +26,9 @@ func main() {
 	// 	w.Write([]byte("Profile"))
 	// })
 
-	log.Println("server run")
+	log.Println("server run port :8181")
 
-	err := http.ListenAndServe(os.Getenv("PORT"), mux)
+	err := http.ListenAndServe(":8181", mux)
 
 	log.Fatal(err)
 
